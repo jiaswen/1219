@@ -1,0 +1,24 @@
+据我观察
+一般都是包括三种换行
+
+\n+4个空格 在</title>后面
+\n+2个空格
+\n
+
+然后还有首行的 <?xml version=\'1.0\' encoding=\'utf-8\'?>
+
+所以拿到 html
+首先就是4个替换
+content = content.replace('\n    ', '')
+content = content.replace('\n  ', '')
+content = content.replace('\n', '')
+content = content.replace('<?xml version=\'1.0\' encoding=\'utf-8\'?>', '')
+
+把这些写到 htmlz.py 中
+构建一个函数 fetchContent()
+
+from htmlz import *
+content = fetchContent('xxx.html')
+
+
+继续验证这种想法

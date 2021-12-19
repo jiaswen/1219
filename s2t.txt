@@ -1,0 +1,86 @@
+Python 3.10.1 (tags/v3.10.1:2cd268a, Dec  6 2021, 19:10:37) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+{}
+{}
+{
+    '发': '發',
+    '了': [{'了':['吃了', '喝了']}, {'瞭':['了解']}]
+}
+{'发': '發', '了': [{'了': ['吃了', '喝了']}, {'瞭': ['了解']}]}
+s2t = {'发': '發', '了': [{'了': ['吃了', '喝了']}, {'瞭': ['了解']}]}
+s2t
+{'发': '發', '了': [{'了': ['吃了', '喝了']}, {'瞭': ['了解']}]}
+st2['发']
+Traceback (most recent call last):
+  File "<pyshell#7>", line 1, in <module>
+    st2['发']
+NameError: name 'st2' is not defined. Did you mean: 'str'?
+s2t['发']
+'發'
+z = s2t['发']
+z
+'發'
+type z
+SyntaxError: invalid syntax
+type(z)
+<class 'str'>
+type(z) == str
+True
+z = s2t['了']
+type(z)
+<class 'list'>
+type(z) == list
+True
+z
+[{'了': ['吃了', '喝了']}, {'瞭': ['了解']}]
+z[0]
+{'了': ['吃了', '喝了']}
+x = z[0]
+x
+{'了': ['吃了', '喝了']}
+x.values()
+dict_values([['吃了', '喝了']])
+xx = [1,2,3]
+xx.count(1)
+1
+xx.count(10)
+0
+for value in x.values():
+    for phrase in phrases:
+        count = value.count(phrase)
+        total = total + count
+
+        
+Traceback (most recent call last):
+  File "<pyshell#30>", line 2, in <module>
+    for phrase in phrases:
+NameError: name 'phrases' is not defined
+xx
+[1, 2, 3]
+max
+<built-in function max>
+max(xx)
+3
+xx.count(3)
+1
+xx = [0, 0, 3]
+maxcount = max(xx)
+maxcount
+3
+xx.index(maxcount)
+2
+xx[2]
+3
+
+看台湾书店书名和作者名叫什么
+繁体中文版 + 英文原版
+
+问题：
+如果使用 HTML 发布 如何截断？？
+标签不完整的话 就会影响页面本身的 HTML
+
+也转换为图片？？
+
+说起来最好统一形式，都以图片的方式呈现
+嗯，还是统一形式吧
+用图片还有一个好处，就是可以自由地使用各种字体

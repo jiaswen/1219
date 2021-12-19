@@ -1,0 +1,4 @@
+根据google fonts控制台
+不必依次引入 tc和sc
+而是 
+fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Noto+Sans+TC&display=swap

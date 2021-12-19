@@ -1,0 +1,17 @@
+不要管其他格式
+學着跟下载的 Noto Sans TC SC 一样 下载 otf 文件就行
+
+打开
+https://github.com/adobe-fonts/source-han-sans/
+不要管文件夹 看底下 readme 的 
+Latest release 链接 点进去
+选择 otf 选择 TraditionalChinese
+然后下载 otf文件就可以了
+其余的什么变量字体的不要理那些东西，我只要 otf 就够了
+
+然后应用到网页要用 "思源黑體" 不要用 "Source Han Sans TC"
+用後者雖然HTML文件能正常顯示 但HTML文件轉PDF無法正常顯示
+
+思源黑体的 字体 比 NotoSans更全
+NotoSans是将简体繁体完全分开
+而思源黑体则是都包括了 下载的otf字体文件更大

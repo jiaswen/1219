@@ -1,0 +1,69 @@
+1 确定截取点
+用转换成的PDF确定截取点可以吗
+
+方案一：用PDF一頁的最後幾個字符 搜尋
+方案二：計算PDF一頁的文字字符個數 然後每個元素 get_text 計算長度
+方案三：按字符长度截取 但有的有Margin 有的 lineheight 不一样 所以不太准确 能接受两个Post高度不一致吗
+我觉得可以 长度取得长一点 很难分辨出来
+只计算body儿子级子元素的 text 的长度
+到一定长度就分页
+保证页面的元素是这样的
+<body>
+	<h2></h2>
+	<p></p>
+	<p></p>
+	<p></p>
+</body>
+或
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+这种的
+不要在epub每页包一个<div class="article"></div>
+目前来看 这种还是比较靠谱的
+虽然有瑕疵 就用这种搞吧
+直接发布HTML还是比转换成图片体验好的多的多
+
+The recursive argument
+If you call mytag.find_all(), Beautiful Soup will examine all the descendants of mytag: its children, its children’s children, and so on. If you only want Beautiful Soup to consider direct children, you can pass in recursive=False.
+
+body = soup.find(name="body")
+a = body.find_all()  子元素 子元素的子元素 等等等
+b = body.find_all(recursive=False) 儿子级子元素
+
+elements = body.find_all(recursive=False)
+然后循环，计算每个 element 的 text 的长度
+到了一定长度就换行 这个线要大一些 大到要拉挺多滚动条 这样用户就不会明显感觉到每个post不一样高了
+
+如果  元素的 text 长度只有 1 或 2 但这个元素肯定会换行 能否把这个元素的长度设为 10 或 20 占满一行 感觉这样更合理一些
+
+截取到的元素添加到一个新的 soup
+newsoup = BeautifulSoup(markup='<body>', features='html.parser')
+newsoup
+<body></body>
+newsoup.body.append(ele)
+自己最开始犯的错误是 newsoup.append(ele)
+最后 body.decode_contents() 得到HTML
+ele添加到新的soup 的 同时 从旧 soup 中移除
+
+好好看看 BeautifulSoup 文档的 Modifying the tree 这一节
+
+突然發現了 pdfkit 的一個 bug 弄的随园食单的PDF 标题型的处在分页边缘的有的被切割成了上下两半
+
+2 截取后的 HTML 不完整 怎么办？
+偶然想到 看 BeautifulSOup文档的时候
+它可以处理这种情况
+试试看
+完全没问题
+html = '<div><p>楚河然当而我</p><p>汗滴禾下'
+soup = BeautifulSoup(markup=html, features='html.parser')
+soup
+<div><p>楚河然当而我</p><p>汗滴禾下</p></div>
+soup.attrs
+{}
+soup.decode_contents()
+'<div><p>楚河然当而我</p><p>汗滴禾下</p></div>'
+
+所以只要搞定截取点 就 可以了

@@ -1,0 +1,17 @@
+html css
+body {
+    font-family: "Noto Sans TC", "Noto Sans SC";
+}
+然后转 PDF
+TC中不存在的字无法用 SC 显示
+
+试试用 Source Han Sans TC
+
+source han sans otf字体文件比Noto Sans要大
+
+所以 HTML轉PDF 用 思源黑體 就可以了
+
+下載 SourceHanSansTC-Regular.otf 字體文件 安裝
+然後 HTML 的 font-family 要用 "思源黑體"
+而非 Source Han Sans TC 
+否則不能PDF字體正常顯示
